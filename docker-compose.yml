@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  web:
+    # Path to dockerfile.
+    build: .
+    # Do not rebuild if present
+    image: insta_app:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+  redis:
+    image: "redis:alpine"
+    command: redis-server
+    ports:
+      - "6379:6379"
